@@ -1,0 +1,85 @@
+﻿@model cashAccounting.Models.Consumption
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New record</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sum, "Sum", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Category, new List<SelectListItem> {
+                    new SelectListItem { Text = "Select", Value = "none" },
+                    new SelectListItem { Text = "Auto", Value = "auto" },
+                    new SelectListItem { Text = "Bad habits", Value = "bad habits" },
+                    new SelectListItem { Text = "Housing", Value = "housing" },
+                    new SelectListItem { Text = "Domestic needs", Value = "domestic needs" },
+                    new SelectListItem { Text = "Pets", Value = "pets" },
+                    new SelectListItem { Text = "Leisure and recreation", Value = "leisure and recreation" },
+                    new SelectListItem { Text = "Communal payments", Value = "communal payments" },
+                    new SelectListItem { Text = "Medicine", Value = "medicine" },
+                    new SelectListItem { Text = "Taxes", Value = "taxes" },
+                    new SelectListItem { Text = "Education", Value = "education" },
+                    new SelectListItem { Text = "Clothes, shoes, accessories", Value = "clothes, shoes, accessories" },
+                    new SelectListItem { Text = "Nutrition", Value = "nutrition" },
+                    new SelectListItem { Text = "Banking service", Value = "banking service" },
+                    new SelectListItem { Text = "Transport", Value = "transport" },
+                    new SelectListItem { Text = "Work expenses", Value = "work expenses" },
+                    new SelectListItem { Text = "Personal care", Value = "personal care" },
+                    new SelectListItem { Text = "Other", Value = "other" }}, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateConsumption, "Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateConsumption, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateConsumption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, "Comment", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to list", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

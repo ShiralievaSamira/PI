@@ -1,0 +1,44 @@
+﻿@using cashAccounting.Models
+@model IEnumerable<Income>
+
+@{
+    ViewBag.Title = "Income";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of income</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="filter" value="@ViewBag.filter" placeholder="Enter category" class="form-control" />
+    <span>
+        <button type="submit" class="btn btn-default">Search</button>
+    </span>
+
+    <p>
+        @Html.ActionLink("Analysis", "Index", "ChartIncome")
+    </p>
+
+
+    <p>
+        @Html.ActionLink("Create new", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateIncome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th></th>
+            @Html.Action("GetIncomes")
+        </tr>
+    </table>
+}

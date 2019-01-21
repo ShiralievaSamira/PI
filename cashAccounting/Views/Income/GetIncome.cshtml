@@ -1,0 +1,29 @@
+﻿@using cashAccounting.Models
+@model IEnumerable<Income>
+
+@{
+    Layout = null;
+}
+
+@foreach (Income income in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => income.Sum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => income.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => income.DateIncome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => income.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = income.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = income.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = income.Id })
+        </td>
+    </tr>
+}
